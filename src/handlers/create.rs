@@ -15,7 +15,6 @@ pub async fn create_data(mut req: Request<AppState>) -> tide::Result {
 
     // Insere o novo registro
     map.insert(new_id, entry);
-    println!("✅ Registro criado com sucesso (ID: {})", new_id);
 
     // Retorna o id criado como JSON
     Ok(tide::Body::from_json(&serde_json::json!({ "id": new_id }))?.into())

@@ -8,4 +8,4 @@ else
 fi
 
 echo "Lendo o registro criado (id=$id)..."
-curl -s http://127.0.0.1:8080/data/$id | jq 
+curl -s https://crude-production.up.railway.app/data/$id | jq 

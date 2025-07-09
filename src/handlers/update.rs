@@ -6,10 +6,7 @@ pub async fn update_data(mut req: Request<AppState>) -> tide::Result {
     // Extrai o id da URL (ex: /data/:id)
     let id: u32 = match req.param("id")?.parse() {
         Ok(val) => val,
-        Err(_) => {
-            eprintln!("❌ Erro: ID inválido na requisição PUT /data/:id");
-            return Err(tide::Error::from_str(400, "Invalid id"));
-        }
+        Err(_) => return Err(tide::Error::from_str(400, "Invalid id")),
     };
 
     // Lê o corpo da requisição como JSON
@@ -22,10 +19,8 @@ pub async fn update_data(mut req: Request<AppState>) -> tide::Result {
     // Atualiza o registro se existir
     if let std::collections::hash_map::Entry::Occupied(mut e) = map.entry(id) {
         e.insert(entry);
-        println!("✅ Registro atualizado com sucesso (ID: {})", id);
         Ok(tide::Response::new(200))
     } else {
-        println!("❌ Registro não encontrado para atualização (ID: {})", id);
         Ok(tide::Response::new(404))
     }
 }

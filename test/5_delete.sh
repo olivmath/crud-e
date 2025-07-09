@@ -8,8 +8,8 @@ else
 fi
 
 echo "Deletando o registro (id=$id)..."
-curl -s -X DELETE http://127.0.0.1:8080/data/$id -w "Status: %{http_code}\n"
+curl -s -X DELETE https://crude-production.up.railway.app/data/$id -w "Status: %{http_code}\n"
 echo
 
 echo "Tentando ler o registro deletado (id=$id)..."
-curl -s http://127.0.0.1:8080/data/$id -w "\nStatus: %{http_code}\n" 
+curl -s https://crude-production.up.railway.app/data/$id -w "\nStatus: %{http_code}\n" 
