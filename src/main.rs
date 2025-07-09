@@ -27,7 +27,7 @@ async fn main() -> tide::Result<()> {
     app.at("/data/:id").delete(delete_data); // Deleta
     println!("✅ Rotas CRUD configuradas:");
 
-    let addr = "127.0.0.1:8080";
+    let addr = "0.0.0.0:8080";
     println!("🌐 Servidor CRUD rodando em: http://{addr}");
     println!("📋 Endpoints disponíveis:");
     println!("   POST   /data     - Criar novo registro");
